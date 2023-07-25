@@ -1,6 +1,6 @@
 # Facebook Clone
 
-Welcome to Facebook Clone! This is a web application built using Ruby on Rails that mimics some of the basic features of the popular social media platform, Facebook.
+Welcome to Facebook Clone! This is a web application built using Ruby on Rails that mimics some of the basic features of the popular social media platform, Facebook. It is part of The Odin Project Curriculum, the link to the project is here: https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
 
 ## Features
 
