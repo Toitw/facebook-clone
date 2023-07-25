@@ -73,4 +73,8 @@ group :test do
   gem 'guard-minitest',           '2.4.4'
 end
 
-gem "devise", "~> 4.9"
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'letter_opener'
+gem 'gravtastic'
+
