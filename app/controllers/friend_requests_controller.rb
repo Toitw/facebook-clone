@@ -21,6 +21,12 @@ class FriendRequestsController < ApplicationController
         friend_request.update(status: 'accepted')
         redirect_to '/users', notice: 'Friend request accepted.'
     end
+
+    def destroy
+        friend_request = FriendRequest.find(params[:id])
+        friend_request.destroy
+        redirect_to '/users', notice: 'Friend request rejected.'
+    end
   end
   
   

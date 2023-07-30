@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "users#index"
 
-  resources :friend_requests, only: [:index, :create]
+  resources :friend_requests, only: [:index, :create, :update, :destroy]
 end
