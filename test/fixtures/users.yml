@@ -4,8 +4,17 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+# test/fixtures/users.yml
+
+one:
+  id: 1
+  name: Papa jones
+  email: papito.doe@example.com
+  encrypted_password: '123456'
+
+two:
+  id: 2
+  name: La paqui
+  email: paquita@example.com
+  encrypted_password: "123456"
+
