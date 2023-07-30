@@ -1,8 +1,14 @@
+<h1> Welcome <%= current_user.name %> </h1>
 
+<h2> All Users </h2>
 <ul>
   <% @users.each do |user| %>
-    <li><%= user.name %></li>
+    <li><%= user.name %><%= button_to 'Send Friend Request', friend_requests_path(recipient_id: user.id), method: :post %></li>
   <% end %>
 </ul>
 
 <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+
+
+<%= link_to 'Friend Requests', friend_requests_path %>
+```

@@ -1,0 +1,5 @@
+<h1>Friend requests</h1>
+
+<% @friend_requests.each do |friend_request| %>
+  <p><%= friend_request.sender.name %> wants to be friends with <%= friend_request.recipient.name %></p>
+<% end %>
