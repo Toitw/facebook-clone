@@ -10,4 +10,5 @@ class FriendRequest < ApplicationRecord
     self.status = 'pending'
     save
   end
+
 end
