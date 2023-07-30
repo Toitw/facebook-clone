@@ -15,6 +15,12 @@ class FriendRequestsController < ApplicationController
         redirect_to '/users', alert: 'Failed to send friend request.'
       end
     end
+
+    def update
+        friend_request = FriendRequest.find(params[:id])
+        friend_request.update(status: 'accepted')
+        redirect_to '/users', notice: 'Friend request accepted.'
+    end
   end
   
   
