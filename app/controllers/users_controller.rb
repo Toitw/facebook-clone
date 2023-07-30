@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
     def index
         @users = User.where.not(id: current_user.id)
+        @user = current_user
+        if @user.friends.any?
+            @friends = @user.friends
+        else
+            @friends = nil
+        end
     end
     
     def show

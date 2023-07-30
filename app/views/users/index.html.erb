@@ -9,6 +9,17 @@
   <% end %>
 </ul>
 
+<h2> Your Friends </h2>
+<ul>
+<% if @friends %>
+  <% @friends.each do |friend| %>
+    <li><%= friend.name %></li>
+  <% end %>
+<% else %>
+  <li>You have no friends</li>
+<% end %>
+</ul>
+
 <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
 
 
