@@ -5,5 +5,5 @@
 <% @friend_requests.each do |friend_request| %>
   <p><%= friend_request.sender.name %> wants to be friends with <%= friend_request.recipient.name %></p>
   <%= button_to 'Accept', friend_request_path(friend_request, status: 'accepted'), method: :patch %>
-  <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :patch %>
+  <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :delete %>
 <% end %>
