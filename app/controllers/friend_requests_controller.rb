@@ -25,7 +25,11 @@ class FriendRequestsController < ApplicationController
     def destroy
         friend_request = FriendRequest.find(params[:id])
         friend_request.destroy
-        redirect_to '/friend_requests', notice: 'Friend request rejected.'
+        if friend_request.status == 'pending'
+          redirect_to '/friend_requests', notice: 'Friend request rejected.'
+        else
+          redirect_to '/friend_requests', notice: 'No longer a friend.'
+        end
     end
   end
   
