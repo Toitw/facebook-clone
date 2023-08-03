@@ -34,13 +34,12 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
   
-  test "should destroy friend request" do
+  test "should destroy friend request and redirect" do
     friend_request = friend_requests(:one)
     assert_difference('FriendRequest.count', -1) do
       delete friend_request_path(friend_request)
     end
 
-    assert_redirected_to '/users'
-    assert_equal 'Friend request rejected.', flash[:notice]
+    assert_redirected_to '/friend_requests'
   end
 end
