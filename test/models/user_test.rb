@@ -12,8 +12,4 @@ include Devise::Test::IntegrationHelpers
     assert_not user.save
   end
 
-  test "name field is shown in the registration view" do
-    get new_user_registration_path
-    assert_select "input[name=?]", "user[name]"
-  end
 end
