@@ -9,6 +9,7 @@ class UsersController < ApplicationController
         else
             @friends = nil
         end
+        @friend_requests = current_user.friend_requests
     end
     
     def show

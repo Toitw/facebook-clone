@@ -20,4 +20,10 @@ class User < ApplicationRecord
     friends
   end
 
+  def friend_requests
+    #fetch all friend requests sent or recieved by the current user
+    friend_requests = FriendRequest.where(recipient: self, status: "accepted") + FriendRequest.where(sender: self, status: "accepted")
+    friend_requests
+  end
+
 end
