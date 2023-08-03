@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "sender_id"
   has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "recipient_id"
 
+  validates :name, presence: true
+
   def friends
     # Fetch friend requests where the status is "accepted" for the current user
     accepted_friend_requests = FriendRequest.where(recipient: self, status: "accepted")
