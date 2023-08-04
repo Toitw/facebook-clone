@@ -28,4 +28,9 @@ class User < ApplicationRecord
     friend_requests
   end
 
+  def friends_posts_and_own
+    friend_ids = friends.pluck(:id) + [id]
+    Post.includes(:user, :likes, :comments).where(user_id: friend_ids).order(created_at: :desc)
+  end
+
 end

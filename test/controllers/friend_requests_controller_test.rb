@@ -29,7 +29,7 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
   
 
   test "should destroy friend request" do
-    friend_request = friend_requests(:one) # Assuming you have a fixture or factory for friend_requests
+    friend_request = friend_requests(:one) 
     delete friend_request_path(friend_request)
     assert_response :redirect
   end

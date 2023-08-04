@@ -1,0 +1,33 @@
+<!-- app/views/posts/index.html.erb -->
+<h2>Timeline</h2>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <p><strong><%= post.user.name %></strong></p>
+      <p><%= post.content %></p>
+
+      <% if post.likes.any? %>
+        <p>Likes: <%= post.likes.count %></p>
+      <% end %>
+
+      <% if post.comments.any? %>
+        <p>Comments:</p>
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li><strong><%= comment.user.name %></strong>: <%= comment.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= button_to "Like", like_post_path(post), method: :post %>
+      <%= form_with(model: Comment.new, url: comments_path, local: true) do |form| %>
+        <%= form.hidden_field :post_id, value: post.id %>
+        <%= form.text_field :content, placeholder: "Add a comment..." %>
+        <%= form.submit "Comment" %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No posts to show.</p>
+<% end %>
