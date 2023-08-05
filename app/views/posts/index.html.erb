@@ -1,4 +1,6 @@
 <!-- app/views/posts/index.html.erb -->
+<h1>Welcome <%= current_user.name %></h1>
+
 <h2>Timeline</h2>
 
 <%= form_with(model: Post.create, url: posts_path, local: true) do |form| %>
