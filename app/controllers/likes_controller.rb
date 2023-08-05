@@ -2,8 +2,9 @@ class LikesController < ApplicationController
     before_action :authenticate_user!
 
     def create
-        @post = Post.find(params[:post_id])
-        @like = current_user.likes.build(post: @post)
+        @post = Post.find(params[:like][:post_id])
+        @user = current_user
+        @like = @post.likes.build(user: current_user)
         if @like.save
             redirect_to posts_path
         else
@@ -21,6 +22,6 @@ class LikesController < ApplicationController
 
     private
     def like_params
-        params.require(:like).permit(:body)
+        params.require(:like).permit(:post_id, :user_id)
     end
 end
