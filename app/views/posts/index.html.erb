@@ -1,6 +1,11 @@
 <!-- app/views/posts/index.html.erb -->
 <h2>Timeline</h2>
 
+<%= form_with(model: Post.create, url: posts_path, local: true) do |form| %>
+  <%= form.text_field :content, placeholder: "What's on your mind?" %>
+  <%= form.submit "Post" %>
+<% end %>
+
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <div class="post">
@@ -20,7 +25,7 @@
         </ul>
       <% end %>
 
-      <%= button_to "Like", like_post_path(post), method: :post %>
+      <%= button_to "Like", likes_path(post), method: :like %>
       <%= form_with(model: Comment.new, url: comments_path, local: true) do |form| %>
         <%= form.hidden_field :post_id, value: post.id %>
         <%= form.text_field :content, placeholder: "Add a comment..." %>

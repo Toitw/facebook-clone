@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :friend_requests, only: [:index, :create, :update, :destroy]
-  resources :post
-  resources :comment, only: [:create, :update, :destroy]
-  resources :like, only: [:create, :destroy]
+  resources :posts
+  resources :comments, only: [:create, :update, :destroy]
+  resources :likes, only: [:create, :destroy]
 
 end
