@@ -33,7 +33,7 @@
         <%= form.submit "Like" %>
       <% end %>
 
-      <%= form_with(model: Comment.new, url: posts_path, local: true) do |form| %>
+      <%= form_with(model: Comment.new, url: posts_path(comment), local: true) do |form| %>
         <%= form.hidden_field :post_id, value: post.id %>
         <%= form.text_field :content, placeholder: "Add a comment..." %>
         <%= form.submit "Comment" %>

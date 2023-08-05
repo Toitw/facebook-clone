@@ -1,11 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+#create 3 comments for testing
 one:
-  content: MyText
-  user: one
-  post: one
+  content: "This is a comment"
+  user_id: 1
+  post_id: 1
 
 two:
-  content: MyText
-  user: two
-  post: two
+  content: "This is another comment"
+  user_id: 2
+  post_id: 2
+
+three:
+  content: "This is a third comment"
+  user_id: 1
+  post_id: 1
+
+
+
