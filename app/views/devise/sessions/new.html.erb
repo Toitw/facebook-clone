@@ -20,7 +20,9 @@
 
   <div class="actions">
     <%= f.submit "Log in" %>
+    <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 <% end %>
+
 
 <%= render "devise/shared/links" %>

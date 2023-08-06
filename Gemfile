@@ -77,4 +77,5 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'letter_opener'
 gem 'gravtastic'
+gem 'gravatar_image_tag'
 
