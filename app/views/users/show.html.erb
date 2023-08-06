@@ -1,0 +1,33 @@
+<h1> Hello <%= @user.name %> </h1>
+
+<h2> Your posts </h2>
+
+<% if @user.posts.any? %>
+    <% @user.posts.each do |post| %>
+        <div class="post">
+            <p><strong><%= post.user.name %></strong></p>
+            <p><%= post.content %></p>
+            <% if post.likes.any? %>
+                <p>Likes: <%= post.likes.count %></p>
+            <% end %>
+            <% if post.comments.any? %>
+                <p>Comments:</p>
+                <ul>
+                    <% post.comments.each do |comment| %>
+                        <li><strong><%= comment.user.name %></strong>: <%= comment.content %></li>
+                        <%= button_to "Delete comment", comment_path(comment), method: :delete %>
+                    <% end %>
+                </ul>
+            <% end %>
+            <%= form_with(model: post.likes.build, url: likes_path(post)) do |form| %>
+                <%= form.submit "Like" %>
+            <% end %>
+            <%= form_with(model: post.comments.build, url: comments_path(post)) do |form| %>
+                <%= form.text_field :content, placeholder: "Add a comment..." %>
+                <%= form.submit "Comment" %>
+            <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <p>No posts yet.</p>
+<% end %>

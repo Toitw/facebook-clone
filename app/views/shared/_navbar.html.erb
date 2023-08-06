@@ -1,9 +1,10 @@
 <nav>
   <% if user_signed_in? %>
     <%= link_to "Home", root_path %>
+    <%= link_to "Profile", user_path(id: current_user.id) %>
     <%= link_to "All Users", users_path %>
     <%= link_to 'Friend Requests', friend_requests_path %>
-    <%= link_to "Profile", edit_user_registration_path %>
+    <%= link_to "My account", edit_user_registration_path %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
   <% end %>
 </nav>
