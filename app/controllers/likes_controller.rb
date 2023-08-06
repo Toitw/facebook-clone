@@ -19,7 +19,6 @@ class LikesController < ApplicationController
       
 
     def destroy
-        @post = Post.find(params[:post_id])
         @like = Like.find(params[:id])
 
         @like.destroy
