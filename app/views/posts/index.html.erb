@@ -23,7 +23,7 @@
         <ul>
           <% post.comments.each do |comment| %>
             <li><strong><%= comment.user.name %></strong>: <%= comment.content %></li>
-            <%= button_to "Delete comment", comment_path(comment), method: :delete, params: { post_id: post.id, comment_id: comment.id } %>
+            <%= button_to "Delete comment", comment_path(comment), method: :delete %>
           <% end %>
         </ul>
       <% end %>
@@ -33,7 +33,7 @@
         <%= form.submit "Like" %>
       <% end %>
 
-      <%= form_with(model: Comment.new, url: posts_path(comment), local: true) do |form| %>
+      <%= form_with(model: Comment.new, url: comments_path(@comment)) do |form| %>
         <%= form.hidden_field :post_id, value: post.id %>
         <%= form.text_field :content, placeholder: "Add a comment..." %>
         <%= form.submit "Comment" %>
