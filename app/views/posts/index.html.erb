@@ -24,6 +24,11 @@
           <% post.comments.each do |comment| %>
             <li><strong><%= comment.user.name %></strong>: <%= comment.content %></li>
             <%= button_to "Delete comment", comment_path(comment), method: :delete %>
+              <% if flash[:alert] %>
+                <div class="alert alert-danger">
+                  <%= flash[:alert] %>
+                </div>
+              <% end %>
           <% end %>
         </ul>
       <% end %>
