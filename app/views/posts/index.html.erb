@@ -12,8 +12,6 @@
         <div class="post-header">
           <p class="user-name"><strong><%= post.user.name %></strong></p>
           <div class="post-content"><%= post.content %></div>
-        </div>
-
         <% if post.likes.any? %>
           <p class="likes-count">Likes: <%= post.likes.count %></p>
         <% end %>
@@ -26,11 +24,13 @@
                 <li class="comment">
                   <p class="comment-user"><strong><%= comment.user.name %></strong>:</p>
                   <p class="comment-content"><%= comment.content %></p>
-                  <%= button_to "Delete comment", comment_path(comment), method: :delete, class: "delete-comment-button" %>
-                  <% if flash[:alert] %>
-                    <div class="alert alert-danger">
-                      <%= flash[:alert] %>
-                    </div>
+                  <% if current_user == comment.user %>
+                    <%= button_to "Delete comment", comment_path(comment), method: :delete, class: "delete-comment-button" %>
+                    <% if flash[:alert] %>
+                      <div class="alert alert-danger">
+                        <%= flash[:alert] %>
+                      </div>
+                    <% end %>
                   <% end %>
                 </li>
               <% end %>
