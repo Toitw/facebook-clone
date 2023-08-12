@@ -1,28 +1,38 @@
-<div class="notice">
-  <%= notice %>
+<div class="user">
+  <div class="container">
+      <div class="notice">
+        <%= notice %>
+      </div>
+
+      <h1 class="user-heading"> Welcome <%= current_user.name %> </h1>
+
+      <h2 class="user-subheading"> All Users </h2>
+      <ul class="user-list">
+        <% @users.each do |user| %>
+          <% unless @users.include?(@friends) %>
+            <li class="user-list-item">
+              <span class="user-name"><%= user.name %></span>
+              <%= button_to 'Send Friend Request', friend_requests_path(recipient_id: user.id), method: :post, class: "send-friend-request-button" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+
+      <h2 class="user-subheading"> Your Friends </h2>
+      <ul class="user-list">
+      <% if @friends %>
+        <% @friends.each do |friend| %>
+          <li class="user-list-item">
+            <span class="user-name"><%= friend.name %></span>
+            <%= button_to 'Unfriend', friend_request_path(friend.friend_requests), method: :delete, class: "unfriend-button" %>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="no-friends-message">You have no friends</li>
+      <% end %>
+      </ul>
+  </div>
 </div>
 
-<h1> Welcome <%= current_user.name %> </h1>
-
-<h2> All Users </h2>
-<ul>
-  <% @users.each do |user| %>
-    <% unless @users.include?(@friends) %>
-      <li><%= user.name %><%= button_to 'Send Friend Request', friend_requests_path(recipient_id: user.id), method: :post %></li>
-    <% end %>
-  <% end %>
-</ul>
-
-<h2> Your Friends </h2>
-<ul>
-<% if @friends %>
-  <% @friends.each do |friend| %>
-    <li><%= friend.name %></li>
-    <%= button_to 'Unfriend', friend_request_path(friend.friend_requests), method: :delete %>
-  <% end %>
-<% else %>
-  <li>You have no friends</li>
-<% end %>
-</ul>
 
 
