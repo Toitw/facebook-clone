@@ -4,11 +4,13 @@
     <h1 class="friend-requests-heading">Friend requests</h1>
 
     <% @friend_requests.each do |friend_request| %>
+      <% if friend_request.status == 'pending' %>
       <p class="friend-request-info"><%= friend_request.sender.name %> wants to be your friend!</p>
-      <div class="button-group">
-        <%= button_to 'Accept', friend_request_path(friend_request, status: 'accepted'), method: :patch, class: "button-to accept-button" %>
-        <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :delete, class: "button-to decline-button" %>
-      </div>
+        <div class="button-group">
+          <%= button_to 'Accept', friend_request_path(friend_request, status: 'accepted'), method: :patch, class: "button-to accept-button" %>
+          <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :delete, class: "button-to decline-button" %>
+        </div>
+      <% end %>
     <% end %>
 
     <%= link_to 'Back', root_path, class: "back-link" %>
