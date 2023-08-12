@@ -1,50 +1,56 @@
 <!-- app/views/posts/index.html.erb -->
-<h1>Welcome <%= current_user.name %></h1>
+<div class="timeline">
 
-<h2>Timeline</h2>
-
-<%= form_with(model: Post.create, url: posts_path, local: true) do |form| %>
-  <%= form.text_field :content, placeholder: "What's on your mind?" %>
-  <%= form.submit "Post" %>
-<% end %>
-
-<% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <div class="post">
-      <p><strong><%= post.user.name %></strong></p>
-      <p><%= post.content %></p>
-
-      <% if post.likes.any? %>
-        <p>Likes: <%= post.likes.count %></p>
-      <% end %>
-
-      <% if post.comments.any? %>
-        <p>Comments:</p>
-        <ul>
-          <% post.comments.each do |comment| %>
-            <li><strong><%= comment.user.name %></strong>: <%= comment.content %></li>
-            <%= button_to "Delete comment", comment_path(comment), method: :delete %>
-              <% if flash[:alert] %>
-                <div class="alert alert-danger">
-                  <%= flash[:alert] %>
-                </div>
-              <% end %>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <%= form_with(model: Like.new, url: likes_path(post)) do |form| %>
-        <%= form.hidden_field :post_id, value: post.id %>
-        <%= form.submit "Like" %>
-      <% end %>
-
-      <%= form_with(model: Comment.new, url: comments_path(@comment)) do |form| %>
-        <%= form.hidden_field :post_id, value: post.id %>
-        <%= form.text_field :content, placeholder: "Add a comment..." %>
-        <%= form.submit "Comment" %>
-      <% end %>
-    </div>
+  <%= form_with(model: Post.create, url: posts_path, local: true, class: "post-form") do |form| %>
+    <%= form.text_field :content, placeholder: "What's on your mind?", class: "post-input" %>
+    <%= form.submit "Post", class: "post-button" %>
   <% end %>
-<% else %>
-  <p>No posts to show.</p>
-<% end %>
+
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-header">
+          <p class="user-name"><strong><%= post.user.name %></strong></p>
+          <div class="post-content"><%= post.content %></div>
+        </div>
+
+        <% if post.likes.any? %>
+          <p class="likes-count">Likes: <%= post.likes.count %></p>
+        <% end %>
+
+        <% if post.comments.any? %>
+          <div class="comments-section">
+            <p class="comments-title">Comments:</p>
+            <ul class="comments-list">
+              <% post.comments.each do |comment| %>
+                <li class="comment">
+                  <p class="comment-user"><strong><%= comment.user.name %></strong>:</p>
+                  <p class="comment-content"><%= comment.content %></p>
+                  <%= button_to "Delete comment", comment_path(comment), method: :delete, class: "delete-comment-button" %>
+                  <% if flash[:alert] %>
+                    <div class="alert alert-danger">
+                      <%= flash[:alert] %>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form_with(model: Like.new, url: likes_path(post), class: "like-form") do |form| %>
+          <%= form.hidden_field :post_id, value: post.id %>
+          <%= form.submit "Like", class: "like-button" %>
+        <% end %>
+
+        <%= form_with(model: Comment.new, url: comments_path(@comment), class: "comment-form") do |form| %>
+          <%= form.hidden_field :post_id, value: post.id %>
+          <%= form.text_field :content, placeholder: "Add a comment...", class: "comment-input" %>
+          <%= form.submit "Comment", class: "comment-button" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="no-posts-message">No posts to show.</p>
+  <% end %>
+</div>

@@ -1,0 +1,123 @@
+/* app/assets/stylesheets/application.css */
+
+/* Timeline Styles */
+.timeline {
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .welcome-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .post-form {
+    margin-bottom: 20px;
+  }
+  
+  .post-input {
+    width: 96%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .post-button {
+    background-color: #1877f2;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .post-button:hover {
+    background-color: #1252a3;
+  }
+  
+  .post {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .post-content {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .likes-count {
+    font-size: 14px;
+    color: #888888;
+  }
+  
+  .comments-section {
+    margin-top: 10px;
+  }
+  
+  .comments-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .comments-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comment {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+  .comment-user {
+    font-weight: bold;
+  }
+  
+  .comment-content {
+    margin-top: 5px;
+  }
+  
+  .delete-comment-button {
+    background-color: transparent;
+    color: #ff0000;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .delete-comment-button:hover {
+    text-decoration: underline;
+  }
+  
+  .no-posts-message {
+    font-size: 18px;
+    text-align: center;
+    color: #888888;
+  }
+  
