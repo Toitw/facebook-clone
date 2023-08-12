@@ -10,9 +10,9 @@ class FriendRequestsController < ApplicationController
       recipient = User.find(params[:recipient_id])
       friend_request = FriendRequest.new(sender: sender, recipient: recipient, status: 'pending')
       if friend_request.save
-        redirect_to '/', notice: 'Friend request sent.'
+        redirect_to '/users', notice: 'Friend request sent.'
       else
-        redirect_to '/', alert: 'Failed to send friend request.'
+        redirect_to '/users', alert: 'Failed to send friend request.'
       end
     end
 
