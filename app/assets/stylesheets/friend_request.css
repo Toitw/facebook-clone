@@ -1,0 +1,66 @@
+/* app/assets/stylesheets/application.css */
+
+/* Friend Requests Styles */
+.friend_requests {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Subtract the height of the navbar */
+    margin-top: 60px; /* Height of the navbar */
+    background-color: #f0f2f5; /* Light Gray */
+  }
+  
+  .friend_requests .container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .friend-requests-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .friend-request-info {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button-to {
+    background-color: #1877f2; /* Facebook Blue Color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .accept-button:hover {
+    background-color: #1150a7; /* Darker Facebook Blue Color */
+  }
+  
+  .decline-button:hover {
+    background-color: #e04848; /* Red Color */
+  }
+  
+  .back-link {
+    display: block;
+    margin-top: 20px;
+    color: #1877f2; /* Facebook Blue Color */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .back-link:hover {
+    color: #1150a7; /* Darker Facebook Blue Color */
+  }
+  

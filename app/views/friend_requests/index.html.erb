@@ -1,12 +1,17 @@
 <%= notice %>
+<div class="friend_requests">
+  <div class="container">
+    <h1 class="friend-requests-heading">Friend requests</h1>
 
-<h1>Friend requests</h1>
+    <% @friend_requests.each do |friend_request| %>
+      <p class="friend-request-info"><%= friend_request.sender.name %> wants to be your friend!</p>
+      <div class="button-group">
+        <%= button_to 'Accept', friend_request_path(friend_request, status: 'accepted'), method: :patch, class: "button-to accept-button" %>
+        <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :delete, class: "button-to decline-button" %>
+      </div>
+    <% end %>
 
-<% @friend_requests.each do |friend_request| %>
-  <p><%= friend_request.sender.name %> wants to be friends with <%= friend_request.recipient.name %></p>
-  <%= button_to 'Accept', friend_request_path(friend_request, status: 'accepted'), method: :patch %>
-  <%= button_to 'Decline', friend_request_path(friend_request, status: 'declined'), method: :delete %>
-<% end %>
+    <%= link_to 'Back', root_path, class: "back-link" %>
+  </div>
+</div>
 
-
-<%= link_to 'Back', root_path %>
