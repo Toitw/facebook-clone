@@ -1,0 +1,48 @@
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1877f2; /* Facebook Blue Color */
+    color: white;
+  }
+  
+  .navbar-links {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-link:hover {
+    color: #e4e6eb; /* Light Gray */
+  }
+  
+  .navbar-user {
+    display: flex;
+    align-items: center;
+  }
+  
+.signout-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    padding: 0;
+    height: 18px;
+}
+  
+  .signout-button:hover {
+    color: #e4e6eb; /* Light Gray */
+  }
+  
+  
