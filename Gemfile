@@ -75,7 +75,7 @@ end
 
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'letter_opener'
+gem "letter_opener", group: :development
 gem 'gravtastic'
 gem 'gravatar_image_tag'
 
