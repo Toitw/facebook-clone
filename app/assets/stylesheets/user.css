@@ -4,9 +4,10 @@
 .user {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 60px; /* Height of the navbar */
     background-color: #f0f2f5; /* Light Gray */
+    height: 800px;
   }
   
   /* Rest of the CSS remains the same */
