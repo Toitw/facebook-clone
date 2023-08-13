@@ -7,7 +7,7 @@
       <h2 class="user-subheading"> All Users </h2>
       <ul class="user-list">
         <% @users.each do |user| %>
-          <% unless @friends.include?(user) %>
+            <% unless @friends.include?(user) || current_user.pending_friend_requests.include?(user) %>
             <li class="user-list-item">
               <span class="user-name"><%= user.name %></span>
               <%= button_to 'Send Friend Request', friend_requests_path(recipient_id: user.id), method: :post, class: "send-friend-request-button" %>

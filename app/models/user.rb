@@ -35,4 +35,17 @@ class User < ApplicationRecord
     Post.includes(:user, :likes, :comments).where(user_id: friend_ids).order(created_at: :desc)
   end
 
+  def pending_friend_requests
+    pending_friend_requests = FriendRequest.where(recipient: self, status: "pending") + FriendRequest.where(sender: self, status: "pending")
+    users = []
+    pending_friend_requests.each do |request|
+      if request.sender == self
+        users << request.recipient
+      else
+        users << request.sender
+      end
+    end
+    users
+  end
+
 end
