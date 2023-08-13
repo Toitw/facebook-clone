@@ -1,6 +1,6 @@
 <!-- app/views/posts/index.html.erb -->
-<div class="timeline">
 
+<div class="timeline">
   <%= form_with(model: Post.create, url: posts_path, local: true, class: "post-form") do |form| %>
     <%= form.text_field :content, placeholder: "What's on your mind?", class: "post-input" %>
     <%= form.submit "Post", class: "post-button" %>
@@ -12,10 +12,12 @@
         <div class="post-header">
           <p class="user-name"><strong><%= post.user.name %></strong></p>
           <div class="post-content"><%= post.content %></div>
-        <% if post.likes.any? %>
-          <p class="likes-count">Likes: <%= post.likes.count %></p>
-        <% end %>
+          <% if post.likes.any? %>
+            <p class="likes-count">Likes: <%= post.likes.count %></p>
+          <% end %>
+        </div> <!-- Close post-header here -->
 
+        <!-- Display comments section and forms -->
         <% if post.comments.any? %>
           <div class="comments-section">
             <p class="comments-title">Comments:</p>
@@ -38,16 +40,19 @@
           </div>
         <% end %>
 
-        <%= form_with(model: Like.new, url: likes_path(post), class: "like-form") do |form| %>
-          <%= form.hidden_field :post_id, value: post.id %>
-          <%= form.submit "Like", class: "like-button" %>
-        <% end %>
+        <!-- Display forms for likes and comments -->
+        <div class="post-actions">
+          <%= form_with(model: Like.new, url: likes_path(post), class: "like-form") do |form| %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.submit "Like", class: "like-button" %>
+          <% end %>
 
-        <%= form_with(model: Comment.new, url: comments_path(@comment), class: "comment-form") do |form| %>
-          <%= form.hidden_field :post_id, value: post.id %>
-          <%= form.text_field :content, placeholder: "Add a comment...", class: "comment-input" %>
-          <%= form.submit "Comment", class: "comment-button" %>
-        <% end %>
+          <%= form_with(model: Comment.new, url: comments_path(@comment), class: "comment-form") do |form| %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.text_field :content, placeholder: "Add a comment...", class: "comment-input" %>
+            <%= form.submit "Comment", class: "comment-button" %>
+          <% end %>
+        </div> <!-- Close post-actions here -->
       </div>
     <% end %>
   <% else %>
