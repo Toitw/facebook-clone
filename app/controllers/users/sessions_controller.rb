@@ -9,9 +9,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super do |user|
+      UserMailer.with(user: user).welcome_email.deliver_later
+    end
+  end
 
   # DELETE /resource/sign_out
   def destroy
