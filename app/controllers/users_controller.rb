@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         if @user.friends.any?
             @friends = @user.friends
         else
-            @friends = nil
+            @friends = []
         end
         @friend_requests = current_user.friend_requests
     end

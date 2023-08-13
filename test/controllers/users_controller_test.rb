@@ -16,5 +16,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select "p", "This is a post"
   end
 
+  test "index view shows all users" do
+    sign_in @user1
+    get users_path
+    
+    assert_response :success
+
+  end
+
 
 end
