@@ -15,6 +15,10 @@
           <% if post.likes.any? %>
             <p class="likes-count">Likes: <%= post.likes.count %></p>
           <% end %>
+          <%= form_with(model: Like.new, url: likes_path(post), class: "like-form") do |form| %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.submit "Like", class: "like-button" %>
+          <% end %>
         </div> <!-- Close post-header here -->
 
         <!-- Display comments section and forms -->
@@ -42,10 +46,6 @@
 
         <!-- Display forms for likes and comments -->
         <div class="post-actions">
-          <%= form_with(model: Like.new, url: likes_path(post), class: "like-form") do |form| %>
-            <%= form.hidden_field :post_id, value: post.id %>
-            <%= form.submit "Like", class: "like-button" %>
-          <% end %>
 
           <%= form_with(model: Comment.new, url: comments_path(@comment), class: "comment-form") do |form| %>
             <%= form.hidden_field :post_id, value: post.id %>
